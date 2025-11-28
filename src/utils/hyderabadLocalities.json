@@ -1,0 +1,62 @@
+[
+    {
+        "locality": "Banjara Hills",
+        "description": "A posh locality known for its upscale lifestyle, shopping malls, and restaurants.",
+        "average_price": 15000,
+        "amenities": ["Shopping Malls", "Restaurants", "Parks", "Schools"]
+    },
+    {
+        "locality": "Jubilee Hills",
+        "description": "An affluent neighborhood with a mix of residential and commercial properties.",
+        "average_price": 16000,
+        "amenities": ["Cafes", "Gyms", "Parks", "Schools"]
+    },
+    {
+        "locality": "Gachibowli",
+        "description": "A major IT hub with many tech companies and educational institutions.",
+        "average_price": 12000,
+        "amenities": ["IT Parks", "Universities", "Shopping Centers", "Hospitals"]
+    },
+    {
+        "locality": "Hitech City",
+        "description": "A modern area known for its technology parks and corporate offices.",
+        "average_price": 14000,
+        "amenities": ["Tech Parks", "Restaurants", "Cafes", "Public Transport"]
+    },
+    {
+        "locality": "Kondapur",
+        "description": "A rapidly developing area with a mix of residential and commercial spaces.",
+        "average_price": 10000,
+        "amenities": ["Schools", "Shopping Malls", "Parks", "Public Transport"]
+    },
+    {
+        "locality": "Madhapur",
+        "description": "A vibrant locality known for its nightlife and proximity to IT companies.",
+        "average_price": 13000,
+        "amenities": ["Restaurants", "Cafes", "Parks", "Shopping Centers"]
+    },
+    {
+        "locality": "Secunderabad",
+        "description": "A historic city with a mix of old and new architecture.",
+        "average_price": 9000,
+        "amenities": ["Historical Sites", "Markets", "Schools", "Hospitals"]
+    },
+    {
+        "locality": "LB Nagar",
+        "description": "A well-connected area with affordable housing options.",
+        "average_price": 8000,
+        "amenities": ["Public Transport", "Markets", "Schools", "Parks"]
+    },
+    {
+        "locality": "Kukatpally",
+        "description": "A bustling locality with a mix of residential and commercial properties.",
+        "average_price": 8500,
+        "amenities": ["Shopping Malls", "Schools", "Public Transport", "Parks"]
+    },
+    {
+        "locality": "Nampally",
+        "description": "A central locality known for its historical significance and markets.",
+        "average_price": 9500,
+        "amenities": ["Historical Sites", "Markets", "Schools", "Public Transport"]
+    }
+]
