@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./index'); // Adjust the path as necessary
+const sequelize = require('../config/database');
 
 class Review extends Model {}
 
@@ -9,47 +9,35 @@ Review.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  property_id: {
+  propertyId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'properties', // Name of the referenced model
+      model: 'properties',
       key: 'id',
     },
   },
-  user_id: {
+  userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'users', // Name of the referenced model
+      model: 'users',
       key: 'id',
     },
   },
   rating: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    validate: {
-      min: 1,
-      max: 5,
-    },
   },
   comment: {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-  },
-  updated_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-  },
 }, {
   sequelize,
   modelName: 'Review',
   tableName: 'reviews',
-  timestamps: false,
+  timestamps: true,
 });
 
 module.exports = Review;

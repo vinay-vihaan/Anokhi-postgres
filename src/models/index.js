@@ -1,37 +1,45 @@
-const User = require('./user');
-const Property = require('./property');
-const Image = require('./image');
-const Agent = require('./agent');
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
+const basename = path.basename(__filename);
+const db = {};
 
-// Associations
-User.hasMany(Property, { foreignKey: 'user_id' });
-Property.belongsTo(User, { foreignKey: 'user_id' });
-Property.hasMany(Image, { foreignKey: 'property_id' });
-Image.belongsTo(Property, { foreignKey: 'property_id' });
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (
+      file.indexOf('.') !== 0 &&
+      file !== basename &&
+      file.slice(-3) === '.js'
+    );
+  })
+  .forEach(file => {
+    const modelDefinition = require(path.join(__dirname, file));
+    let model;
+    
+    // Differentiate between class and function definitions
+    if (typeof modelDefinition === 'function' && modelDefinition.prototype && modelDefinition.prototype.constructor.toString().startsWith('class')) {
+        // Class-based model (e.g., Agent)
+        model = modelDefinition;
+    } else if (typeof modelDefinition === 'function') {
+        // Function-based model (e.g., Listing)
+        model = modelDefinition(sequelize, Sequelize.DataTypes);
+    }
 
-module.exports = { sequelize, User, Property, Image, Agent };
+    if (model && model.name) {
+      db[model.name] = model;
+    }
+  });
 
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-// const sequelize = require('../config/database');
-// const User = require('./user');
-// const Image = require('./image');
-// // Import other models here as you create them
-// const Property = require('./property');
-// const Agent = require('./agent');
-
-// // Define associations here (uncomment when all models are created)
-// // User.hasMany(Property, { foreignKey: 'user_id' });
-// // Property.belongsTo(User, { foreignKey: 'user_id' });
-// // Property.hasMany(Image, { foreignKey: 'property_id' });
-// // Image.belongsTo(Property, { foreignKey: 'property_id' });
-
-// module.exports = {
-//   sequelize,
-//   User,
-//   Image,
-//   // Export other models here
-//   Property,
-//   Agent,
-// };
+module.exports = db;

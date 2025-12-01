@@ -1,7 +1,17 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Adjust the path as necessary
+const sequelize = require('../config/database');
 
-class User extends Model {}
+class User extends Model {
+  static associate(models) {
+    // associations can be defined here
+    User.hasMany(models.Property, {
+      foreignKey: 'user_id',
+    });
+    User.hasMany(models.Booking, {
+      foreignKey: 'userId'
+    });
+  }
+}
 
 User.init({
   id: {

@@ -1,7 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class Property extends Model { }
+class Property extends Model {
+  static associate(models) {
+    Property.belongsTo(models.User, {
+      foreignKey: 'user_id',
+    });
+    Property.hasMany(models.Image, {
+      foreignKey: 'property_id'
+    });
+    Property.hasMany(models.Booking, {
+      foreignKey: 'propertyId'
+    });
+  }
+}
 
 Property.init({
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },

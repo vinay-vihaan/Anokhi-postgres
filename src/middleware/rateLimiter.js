@@ -8,6 +8,4 @@ const authLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Apply to all requests
-// module.exports = exports.authLimiter;
-module.exports = { authLimiter }; // <-- use named export
+module.exports = authLimiter;

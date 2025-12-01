@@ -1,7 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class Image extends Model {}
+class Image extends Model {
+  static associate(models) {
+    Image.belongsTo(models.Property, {
+      foreignKey: 'property_id',
+    });
+  }
+}
 
 Image.init({
   id: {

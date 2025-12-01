@@ -1,8 +1,8 @@
-import { Property } from '../models/property.js';
-import { Op } from 'sequelize';
+const { Property } = require('../models');
+const { Op } = require('sequelize');
 
 // Create a new property
-export const createProperty = async (req, res) => {
+const createProperty = async (req, res) => {
     try {
         const property = await Property.create(req.body);
         res.status(201).json(property);
@@ -12,7 +12,7 @@ export const createProperty = async (req, res) => {
 };
 
 // Get all properties with optional filters
-export const getProperties = async (req, res) => {
+const getProperties = async (req, res) => {
     const { location, priceRange, bedrooms, status } = req.query;
     const filters = {};
 
@@ -39,7 +39,7 @@ export const getProperties = async (req, res) => {
 };
 
 // Get a single property by ID
-export const getPropertyById = async (req, res) => {
+const getPropertyById = async (req, res) => {
     try {
         const property = await Property.findByPk(req.params.id);
         if (!property) {
@@ -52,7 +52,7 @@ export const getPropertyById = async (req, res) => {
 };
 
 // Update a property
-export const updateProperty = async (req, res) => {
+const updateProperty = async (req, res) => {
     try {
         const [updated] = await Property.update(req.body, {
             where: { id: req.params.id }
@@ -68,7 +68,7 @@ export const updateProperty = async (req, res) => {
 };
 
 // Delete a property
-export const deleteProperty = async (req, res) => {
+const deleteProperty = async (req, res) => {
     try {
         const deleted = await Property.destroy({
             where: { id: req.params.id }
@@ -80,4 +80,12 @@ export const deleteProperty = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
+};
+
+module.exports = {
+    createProperty,
+    getProperties,
+    getPropertyById,
+    updateProperty,
+    deleteProperty,
 };

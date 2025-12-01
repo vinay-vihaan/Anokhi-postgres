@@ -1,10 +1,11 @@
-import express from 'express';
-import authRoutes from './auth.js';
-import propertyRoutes from './properties.js';
-import agentRoutes from './agents.js';
-import bookingRoutes from './bookings.js';
-import paymentRoutes from './payments.js';
-import adminRoutes from './admin.js';
+const express = require('express');
+const authRoutes = require('./auth.js');
+const propertyRoutes = require('./properties.js');
+const agentRoutes = require('./agents.js');
+const bookingRoutes = require('./bookings.js');
+const paymentRoutes = require('./payments.js');
+const adminRoutes = require('./admin.js');
+const userRoutes = require('./users.js'); // Import user routes
 
 const router = express.Router();
 
@@ -15,5 +16,6 @@ router.use('/agents', agentRoutes);
 router.use('/bookings', bookingRoutes);
 router.use('/payments', paymentRoutes);
 router.use('/admin', adminRoutes);
+router.use('/users', userRoutes); // Use user routes
 
-export default router;
+module.exports = router;

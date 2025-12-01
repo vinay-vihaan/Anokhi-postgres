@@ -7,7 +7,7 @@ const { validateProperty } = require('../validators/propertyValidators');
 router.post('/', validateProperty, propertyController.createProperty);
 
 // Route to get all properties with optional filters
-router.get('/', propertyController.getAllProperties);
+router.get('/', propertyController.getProperties);
 
 // Route to get a single property by ID
 router.get('/:id', propertyController.getPropertyById);

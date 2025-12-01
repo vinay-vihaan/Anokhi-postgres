@@ -1,7 +1,16 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./index'); // Adjust the path as necessary
+const sequelize = require('../config/database'); // Adjust the path as necessary
 
-class Booking extends Model {}
+class Booking extends Model {
+  static associate(models) {
+    Booking.belongsTo(models.User, {
+      foreignKey: 'userId'
+    });
+    Booking.belongsTo(models.Property, {
+      foreignKey: 'propertyId'
+    });
+  }
+}
 
 Booking.init({
   id: {
@@ -9,11 +18,11 @@ Booking.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  user_id: {
+  userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  property_id: {
+  propertyId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },

@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../models/index').sequelize;
+const sequelize = require('../config/database');
 
 class Feature extends Model {}
 
