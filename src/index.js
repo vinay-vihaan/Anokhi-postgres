@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
 sequelize.authenticate()
     .then(() => {
         console.log('Database connected successfully');
-        return sequelize.sync({ force: true });
+        return sequelize.sync({ force: false });
     })
     .then(() => {
         console.log('Database tables synced');
