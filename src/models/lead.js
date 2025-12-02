@@ -9,8 +9,8 @@ class Lead extends Model {
     Lead.belongsTo(models.User, {
       foreignKey: 'user_id',
     });
-    Lead.belongsTo(models.User, {
-      foreignKey: 'agent_id',
+    Lead.belongsTo(models.Builder, {
+      foreignKey: 'builder_id',
     });
   }
 }

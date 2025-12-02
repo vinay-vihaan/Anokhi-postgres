@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             references: {
                 model: 'properties',
-                key: 'id',
+                key: 'property_id',
             },
         },
         agent_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'agents',
-                key: 'id',
+                model: 'builders',
+                key: 'builder_id',
             },
         },
         listing_type: {
@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Listing.associate = (models) => {
         Listing.belongsTo(models.Property, { foreignKey: 'property_id' });
-        Listing.belongsTo(models.Agent, { foreignKey: 'agent_id' });
+        Listing.belongsTo(models.Builder, { foreignKey: 'agent_id' });
     };
 
     return Listing;

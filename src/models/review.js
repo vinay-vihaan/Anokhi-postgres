@@ -14,7 +14,7 @@ Review.init({
     allowNull: false,
     references: {
       model: 'properties',
-      key: 'id',
+      key: 'property_id',
     },
   },
   userId: {

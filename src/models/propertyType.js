@@ -4,13 +4,14 @@ const sequelize = require('../config/database');
 class PropertyType extends Model {
   static associate(models) {
     PropertyType.hasMany(models.Property, {
-      foreignKey: 'type_id',
+      foreignKey: 'property_type',
+      sourceKey: 'name'
     });
   }
 }
 
 PropertyType.init({
-  type_id: {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,

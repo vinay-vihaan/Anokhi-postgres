@@ -3,18 +3,29 @@ const sequelize = require('../config/database');
 
 class User extends Model {
   static associate(models) {
-    // associations can be defined here
     User.hasMany(models.Property, {
       foreignKey: 'user_id',
     });
-    User.hasMany(models.Booking, {
+    // User.hasMany(models.Booking, {
+    //   foreignKey: 'userId'
+    // });
+    User.hasMany(models.Favorite, {
+      foreignKey: 'user_id'
+    });
+    User.hasMany(models.Lead, {
+      foreignKey: 'user_id'
+    });
+    User.hasMany(models.Review, {
+      foreignKey: 'userId'
+    });
+    User.hasMany(models.Transaction, {
       foreignKey: 'user_id'
     });
   }
 }
 
 User.init({
-  user_id: {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,

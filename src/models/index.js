@@ -16,6 +16,7 @@ fs
     );
   })
   .forEach(file => {
+    console.log(`Loading model: ${file}`); // Added logging
     const modelDefinition = require(path.join(__dirname, file));
     let model;
 
@@ -29,6 +30,8 @@ fs
       db[model.name] = model;
     }
   });
+
+console.log('Loaded models:', Object.keys(db)); // Added logging
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
