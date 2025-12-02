@@ -13,6 +13,9 @@
     # pkgs.nodePackages.nodemon
   ];
 
+  # Enable postgresql
+  services.postgres.enable = true;
+
   # Sets environment variables in the workspace
   env = {};
   idx = {

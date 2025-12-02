@@ -5,6 +5,13 @@ const morgan = require('morgan');
 const errorHandler = require('./middleware/errorHandler');
 const rateLimiter = require('./middleware/rateLimiter');
 const routes = require('./routes/index');
+const propertyTypeRoutes = require('./routes/propertyTypeRoutes');
+const listingRoutes = require('./routes/listingRoutes');
+const leadRoutes = require('./routes/leadRoutes');
+const favoriteRoutes = require('./routes/favoriteRoutes');
+const builderUserRoutes = require('./routes/builderUserRoutes');
+const builderRoutes = require('./routes/builderRoutes');
+const adminDashboardRoutes = require('./routes/adminDashboardRoutes');
 
 const app = express();
 
@@ -17,6 +24,14 @@ app.use(rateLimiter);
 
 // Routes
 app.use('/api', routes);
+app.use('/api/property-types', propertyTypeRoutes);
+app.use('/api/listings', listingRoutes);
+app.use('/api/leads', leadRoutes);
+app.use('/api/favorites', favoriteRoutes);
+app.use('/api/builder-users', builderUserRoutes);
+app.use('/api/builders', builderRoutes);
+app.use('/api/admin-dashboard', adminDashboardRoutes);
+
 
 // Error handling middleware
 app.use(errorHandler);

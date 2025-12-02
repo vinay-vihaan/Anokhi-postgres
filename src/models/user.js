@@ -8,21 +8,16 @@ class User extends Model {
       foreignKey: 'user_id',
     });
     User.hasMany(models.Booking, {
-      foreignKey: 'userId'
+      foreignKey: 'user_id'
     });
   }
 }
 
 User.init({
-  id: {
+  user_id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
-  },
-  user_id: {
-    type: DataTypes.INTEGER,
-    defaultValue: DataTypes.INTEGER,
-    foreignKey: true,
   },
   full_name: {
     type: DataTypes.STRING,
@@ -35,11 +30,11 @@ User.init({
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   role: {
-    type: DataTypes.ENUM('user', 'agent', 'admin'),
-    defaultValue: 'user',
+    type: DataTypes.ENUM('buyer', 'seller', 'agent', 'admin'),
+    defaultValue: 'buyer',
   },
   password_hash: {
     type: DataTypes.STRING,

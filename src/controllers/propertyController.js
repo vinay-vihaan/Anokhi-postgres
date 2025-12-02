@@ -17,7 +17,7 @@ const getProperties = async (req, res) => {
     const filters = {};
 
     if (location) {
-        filters.location = { [Op.iLike]: `%${location}%` };
+        filters['location.address'] = { [Op.iLike]: `%${location}%` };
     }
     if (priceRange) {
         const [min, max] = priceRange.split('-').map(Number);
@@ -55,7 +55,7 @@ const getPropertyById = async (req, res) => {
 const updateProperty = async (req, res) => {
     try {
         const [updated] = await Property.update(req.body, {
-            where: { id: req.params.id }
+            where: { property_id: req.params.id }
         });
         if (!updated) {
             return res.status(404).json({ error: 'Property not found' });
@@ -71,7 +71,7 @@ const updateProperty = async (req, res) => {
 const deleteProperty = async (req, res) => {
     try {
         const deleted = await Property.destroy({
-            where: { id: req.params.id }
+            where: { property_id: req.params.id }
         });
         if (!deleted) {
             return res.status(404).json({ error: 'Property not found' });

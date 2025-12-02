@@ -18,13 +18,10 @@ fs
   .forEach(file => {
     const modelDefinition = require(path.join(__dirname, file));
     let model;
-    
-    // Differentiate between class and function definitions
-    if (typeof modelDefinition === 'function' && modelDefinition.prototype && modelDefinition.prototype.constructor.toString().startsWith('class')) {
-        // Class-based model (e.g., Agent)
+
+    if (Sequelize.Model.isPrototypeOf(modelDefinition)) {
         model = modelDefinition;
     } else if (typeof modelDefinition === 'function') {
-        // Function-based model (e.g., Listing)
         model = modelDefinition(sequelize, Sequelize.DataTypes);
     }
 
