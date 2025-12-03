@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -12,6 +13,9 @@ const favoriteRoutes = require('./routes/favoriteRoutes');
 const builderUserRoutes = require('./routes/builderUserRoutes');
 const builderRoutes = require('./routes/builderRoutes');
 const adminDashboardRoutes = require('./routes/adminDashboardRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
+const amenityRoutes = require('./routes/amenityRoutes');
+const savedSearchRoutes = require('./routes/savedSearchRoutes');
 
 const app = express();
 
@@ -31,6 +35,9 @@ app.use('/api/favorites', favoriteRoutes);
 app.use('/api/builder-users', builderUserRoutes);
 app.use('/api/builders', builderRoutes);
 app.use('/api/admin-dashboard', adminDashboardRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/amenities', amenityRoutes);
+app.use('/api/saved-searches', savedSearchRoutes);
 
 
 // Error handling middleware

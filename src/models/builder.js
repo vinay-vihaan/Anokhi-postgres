@@ -5,6 +5,7 @@ class Builder extends Model {
   static associate(models) {
     Builder.hasMany(models.Property, {
       foreignKey: 'builder_id',
+      as: 'properties'
     });
   }
 }

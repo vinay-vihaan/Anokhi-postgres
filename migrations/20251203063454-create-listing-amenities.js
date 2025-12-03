@@ -1,27 +1,30 @@
 'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('ListingAmenities', {
+    await queryInterface.createTable('listing_amenities', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      property_id: {
+      listing_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Properties',
-          key: 'property_id'
-        }
+          model: 'listings',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       amenity_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Amenities',
+          model: 'amenities',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
@@ -33,8 +36,7 @@ module.exports = {
       }
     });
   },
-
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('ListingAmenities');
+    await queryInterface.dropTable('listing_amenities');
   }
 };

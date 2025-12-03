@@ -2,45 +2,38 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class Review extends Model {
+class SavedSearch extends Model {
   static associate(models) {
-    Review.belongsTo(models.User, {
+    SavedSearch.belongsTo(models.User, {
       foreignKey: 'user_id',
-    });
-    Review.belongsTo(models.Property, {
-      foreignKey: 'property_id',
     });
   }
 }
 
-Review.init({
+SavedSearch.init({
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  property_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
   user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  rating: {
-    type: DataTypes.INTEGER,
+  search_name: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  comment: {
-    type: DataTypes.TEXT,
-    allowNull: true,
+  search_parameters: {
+    type: DataTypes.JSON,
+    allowNull: false,
   },
 }, {
   sequelize,
-  modelName: 'Review',
-  tableName: 'reviews',
+  modelName: 'SavedSearch',
+  tableName: 'saved_searches',
   timestamps: true,
   underscored: true,
 });
 
-module.exports = Review;
+module.exports = SavedSearch;

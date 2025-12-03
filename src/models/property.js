@@ -1,10 +1,11 @@
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 class Property extends Model {
   static associate(models) {
-    Property.belongsTo(models.User, {
-      foreignKey: 'user_id',
+    Property.belongsTo(models.Builder, {
+      foreignKey: 'builder_id',
     });
     Property.belongsToMany(models.Amenity, {
       through: 'PropertyAmenity',
@@ -20,7 +21,7 @@ Property.init({
     autoIncrement: true,
     primaryKey: true
   },
-  user_id: {
+  builder_id: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
@@ -81,7 +82,7 @@ Property.init({
     type: DataTypes.JSON,
     allowNull: true
   },
-  ai_price_estimate: {
+ai_price_estimate: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: true
   },

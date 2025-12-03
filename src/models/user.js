@@ -3,21 +3,27 @@ const sequelize = require('../config/database');
 
 class User extends Model {
   static associate(models) {
+    // A user can have many properties
     User.hasMany(models.Property, {
       foreignKey: 'user_id',
     });
+    // A user can have many bookings (commented out)
     // User.hasMany(models.Booking, {
     //   foreignKey: 'userId'
     // });
+    // A user can have many favorites
     User.hasMany(models.Favorite, {
       foreignKey: 'user_id'
     });
+    // A user can generate many leads
     User.hasMany(models.Lead, {
       foreignKey: 'user_id'
     });
+    // A user can write many reviews
     User.hasMany(models.Review, {
       foreignKey: 'userId'
     });
+    // A user can have many transactions
     User.hasMany(models.Transaction, {
       foreignKey: 'user_id'
     });

@@ -62,7 +62,7 @@ const seedPropertyTypes = async () => {
 const seedProperties = async () => {
     await Property.bulkCreate([
         {
-          "user_id": 4,
+          "builder_id": 1,
           "title": "1BHK Villa in Kondapur",
           "description": "Modern villa with futuristic amenities and VR tour.",
           "property_type": "Villa",
@@ -96,7 +96,7 @@ const seedProperties = async () => {
           "tags": ["Featured"]
         },
         {
-          "user_id": 5,
+          "builder_id": 2,
           "title": "0BHK Commercial in Kondapur",
           "description": "Modern commercial with futuristic amenities and VR tour.",
           "property_type": "Commercial",
@@ -133,7 +133,7 @@ const seedProperties = async () => {
           "tags": ["Featured"]
         },
         {
-          "user_id": 5,
+          "builder_id": 3,
           "title": "4BHK Flat in Gacchibowli",
           "description": "Modern flat with futuristic amenities and VR tour.",
           "property_type": "Flat",
@@ -170,7 +170,7 @@ const seedProperties = async () => {
           "tags": ["Featured"]
         },
         {
-          "user_id": 5,
+          "builder_id": 4,
           "title": "1BHK Flat in Miyapur",
           "description": "Modern flat with futuristic amenities and VR tour.",
           "property_type": "Flat",
@@ -243,9 +243,25 @@ const seedBuilders = async () => {
         "total_views": 560,
         "total_leads": 18,
         "active_listings": 0
+      },
+      {
+        "builder_id": 4,
+        "builder_name": "Prestige Group",
+        "total_properties": 1,
+        "total_views": 1200,
+        "total_leads": 40,
+        "active_listings": 1
+      },
+      {
+        "builder_id": 5,
+        "builder_name": "DLF",
+        "total_properties": 3,
+        "total_views": 3500,
+        "total_leads": 120,
+        "active_listings": 3
       }
     ];
-    await Builder.bulkCreate(builders);
+    await Builder.bulkCreate(builders, { ignoreDuplicates: true });
 };
 
 const seedLeads = async () => {

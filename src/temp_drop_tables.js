@@ -14,7 +14,7 @@ const sequelize = new Sequelize('anokhi', 'vinay', 'heI6AVY7IZSr0FovqCvXOnHFnlDK
 
 (async () => {
   try {
-    await sequelize.query('DROP TABLE IF EXISTS "listing_amenities", "leads", "listings", "properties", "agents", "users", "amenities", "builders", "locations" CASCADE;');
+    await sequelize.query('DROP TABLE IF EXISTS "listing_amenities", "leads", "listings", "properties", "agents", "users", "amenities", "builders", "locations", "SequelizeMeta" CASCADE;');
     console.log('Tables dropped successfully.');
   } catch (error) {
     console.error('Error dropping tables:', error);
