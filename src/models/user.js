@@ -3,10 +3,6 @@ const sequelize = require('../config/database');
 
 class User extends Model {
   static associate(models) {
-    // A user can have many properties
-    User.hasMany(models.Property, {
-      foreignKey: 'user_id',
-    });
     // A user can have many bookings (commented out)
     // User.hasMany(models.Booking, {
     //   foreignKey: 'userId'
@@ -57,6 +53,14 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
 }, {
   sequelize,
   modelName: 'User',

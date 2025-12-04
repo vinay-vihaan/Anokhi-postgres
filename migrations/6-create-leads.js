@@ -12,7 +12,7 @@ module.exports = {
       property_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Properties',
+          model: 'properties',
           key: 'property_id'
         }
       },
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'users',
-          key: 'user_id'
+          key: 'id'
         }
       },
       status: {

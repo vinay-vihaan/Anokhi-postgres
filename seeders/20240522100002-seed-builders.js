@@ -10,6 +10,8 @@ module.exports = {
         total_views: 2350,
         total_leads: 85,
         active_listings: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         builder_id: 2,
@@ -18,6 +20,8 @@ module.exports = {
         total_views: 1880,
         total_leads: 60,
         active_listings: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         builder_id: 3,
@@ -26,6 +30,8 @@ module.exports = {
         total_views: 560,
         total_leads: 18,
         active_listings: 0,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       }
     ], {});
   },

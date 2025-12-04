@@ -21,7 +21,8 @@ Builder.init({
   sequelize,
   modelName: 'Builder',
   tableName: 'builders',
-  timestamps: false,
+  timestamps: true,
+  underscored: true,
 });
 
 module.exports = Builder;

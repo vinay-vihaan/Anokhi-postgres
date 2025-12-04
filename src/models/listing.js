@@ -5,6 +5,14 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true,
         },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         property_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -13,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'property_id',
             },
         },
-        agent_id: {
+        builder_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -22,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         listing_type: {
-            type: DataTypes.ENUM('sale', 'rent'),
+            type: DataTypes.STRING,
             allowNull: false,
         },
         price: {
@@ -30,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         status: {
-            type: DataTypes.ENUM('active', 'inactive', 'sold', 'rented'),
+            type: DataTypes.STRING,
             allowNull: false,
         },
         created_at: {
@@ -51,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Listing.associate = (models) => {
         Listing.belongsTo(models.Property, { foreignKey: 'property_id' });
-        Listing.belongsTo(models.Builder, { foreignKey: 'agent_id' });
+        Listing.belongsTo(models.Builder, { foreignKey: 'builder_id' });
     };
 
     return Listing;
