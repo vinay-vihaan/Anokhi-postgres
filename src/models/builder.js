@@ -17,12 +17,19 @@ Builder.init({
   total_views: { type: DataTypes.INTEGER, defaultValue: 0 },
   total_leads: { type: DataTypes.INTEGER, defaultValue: 0 },
   active_listings: { type: DataTypes.INTEGER, defaultValue: 0 },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  }
 }, {
   sequelize,
   modelName: 'Builder',
   tableName: 'builders',
   timestamps: true,
-  underscored: true,
 });
 
 module.exports = Builder;
