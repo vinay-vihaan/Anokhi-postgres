@@ -46,7 +46,7 @@ User.init({
     allowNull: true,
   },
   role: {
-    type: DataTypes.ENUM('buyer', 'seller', 'agent', 'admin'),
+    type: DataTypes.ENUM('buyer', 'seller', 'agent', 'admin', 'renter', 'builder', 'owner'),
     defaultValue: 'buyer',
   },
   password_hash: {

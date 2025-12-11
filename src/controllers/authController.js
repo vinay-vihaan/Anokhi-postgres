@@ -11,7 +11,7 @@ exports.register = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { full_name, email, phone, password } = req.body;
+    const { full_name, email, phone, password, role } = req.body;
 
     try {
         // Check if user already exists
@@ -26,7 +26,7 @@ exports.register = async (req, res) => {
             email,
             phone,
             password_hash: hashedPassword,
-            role: 'user',
+            role: role || 'buyer', // Use provided role or default to 'buyer'
         });
 
         const token = jwt.sign(
@@ -37,7 +37,7 @@ exports.register = async (req, res) => {
 
         res.status(201).json({
             message: 'User registered successfully',
-            user: { id: newUser.id, full_name: newUser.full_name, email: newUser.email },
+            user: { id: newUser.id, full_name: newUser.full_name, email: newUser.email, role: newUser.role }, // Include role in response
             token,
         });
     } catch (error) {
