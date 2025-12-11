@@ -27,7 +27,7 @@ Amenity.init({
   sequelize,
   modelName: 'Amenity',
   tableName: 'amenities',
-  timestamps: false,
+  timestamps: true,
 });
 
 module.exports = Amenity;
